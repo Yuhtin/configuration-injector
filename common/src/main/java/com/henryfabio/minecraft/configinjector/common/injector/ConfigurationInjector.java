@@ -5,6 +5,7 @@ import com.henryfabio.minecraft.configinjector.common.annotations.ConfigSection;
 import com.henryfabio.minecraft.configinjector.common.annotations.TranslateColors;
 import com.henryfabio.minecraft.configinjector.common.configuration.Configuration;
 import com.henryfabio.minecraft.configinjector.common.loader.ConfigurationLoader;
+import com.henryfabio.minecraft.configinjector.common.loader.ResourceLoader;
 import com.henryfabio.minecraft.configinjector.common.model.ConfigurationField;
 import com.henryfabio.minecraft.configinjector.common.model.ConfigurationFile;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
@@ -41,6 +43,7 @@ public abstract class ConfigurationInjector {
             configurationField.accessible();
 
             Object configurationValue = getConfigurationValue(configuration, configurationField, configurationFile);
+            Logger.getLogger("TEST").info(configurationField.getFieldAnnotation().value() + " " + configurationValue.toString());
             injectValue(injectable, configurationField, configurationValue);
         }
 

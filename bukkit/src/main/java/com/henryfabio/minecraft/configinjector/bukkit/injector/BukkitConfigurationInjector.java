@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public final class BukkitConfigurationInjector extends ConfigurationInjector {
 
     public BukkitConfigurationInjector(Plugin plugin) {
-        super(new BukkitConfigurationLoader(), plugin.getDataFolder());
+        super(new BukkitConfigurationLoader(plugin), plugin.getDataFolder());
     }
 
     public void saveDefaultConfiguration(Plugin plugin, String path) {
